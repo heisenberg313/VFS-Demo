@@ -72,7 +72,28 @@ void runEcho()
     }
 }
 
-//----------SARIM MAQBOOL----------
+//CAT (Read)
+void runCat() {
+    string filename, line;
+    cout << "  [cat] Enter filename: ";
+    cin >> filename;
+
+    if (!fileExists(filename)) {
+        cout << "  Error: File does not exist." << endl;
+    } else {
+        ifstream infile(BASE_PATH + filename);
+        if (infile.is_open()) {
+            cout << "\n--- START OF FILE ---" << endl;
+            while (getline(infile, line)) {
+                cout << line << endl;
+            }
+            cout << "--- END OF FILE ---\n" << endl;
+            infile.close();
+        } else {
+            cout << "  Error: Could not read file." << endl;
+        }
+    }
+}
 
 // RM (Delete Single)
 void runRm()
